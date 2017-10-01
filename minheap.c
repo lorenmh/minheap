@@ -16,7 +16,7 @@ heap_t* create_heap() {
 void print(heap_t *h) {
 	for (int i = 0; i < h->size; i++) {
 		node_t *curr = &h->buf[i];
-		printf("{p: %d, v: %p} ", curr->key, curr->value);
+		printf("{k: %d, v: %p} ", curr->key, curr->value);
 	}
 	printf("\n");
 }

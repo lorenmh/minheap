@@ -13,6 +13,13 @@ heap_t* create_heap() {
 	return h;
 }
 
+void print(heap_t *h) {
+	for (int i = 0; i < h->size; i++) {
+		printf("%d\t", (h->buf[i]).priority);
+	}
+	printf("\n");
+}
+
 void insert(heap_t *h, uint8_t priority, void *value) {
 	// resize the priority queue's buffer
 	if (h->size + 1 >= h->buf_size) {

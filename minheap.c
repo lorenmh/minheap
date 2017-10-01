@@ -26,9 +26,9 @@ int is_empty(heap_t *h) {
 }
 
 void insert(heap_t *h, uint32_t key, void *value) {
-	// resize the key queue's buffer
+	// resize the heap's buffer
 	if (h->size + 1 >= h->buf_size) {
-		h->buf_size = h->buf_size * MINHEAP_BUF_SIZE_FACTOR;
+		h->buf_size = h->buf_size * MINHEAP_BUF_RESIZE_FACTOR;
 		h->buf = realloc(h->buf, h->buf_size);
 	}
 

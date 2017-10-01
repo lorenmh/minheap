@@ -6,6 +6,7 @@ void insert(heap_t*, uint16_t, void*);
 void *extract(heap_t*);
 void print(heap_t*);
 int is_empty(heap_t*);
+void free_heap(heap_t*);
 
 int main(int argc, char* argv[]) {
 	heap_t *h = create_heap();
@@ -20,4 +21,6 @@ int main(int argc, char* argv[]) {
 		printf("extracted: %d\n", extracted);
 		print(h);
 	}
+
+	free_heap(h);
 }

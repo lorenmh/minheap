@@ -67,7 +67,7 @@ void *extract(heap_t *h) {
 	node_t swapped = buf[--(h->size)];
 
 	buf[0] = swapped;
-	uint16_t index = 0;
+	uint32_t index = 0;
 
 	while (index <= h->size / 2 - 1) {
 		uint16_t child0_index = index * 2 + 1;
@@ -77,9 +77,11 @@ void *extract(heap_t *h) {
 		node_t *child0 = child0_index < h->size ? &buf[child0_index] : NULL;
 		node_t *child1 = child1_index < h->size ? &buf[child1_index] : NULL;
 
+		if (child0 == NULL) break;
+
 		// we only compare with the smallest child and swap if its smaller
 		node_t compared;
-		uint16_t compared_index = -1;
+		uint16_t compared_index;
 
 		if (child1 == NULL || child0->key < child1->key) {
 			compared = *child0;
@@ -91,6 +93,8 @@ void *extract(heap_t *h) {
 
 		// no need to do any more swaps, break
 		if (swapped.key < compared.key) break;
+
+		printf("%d %d\n", index, compared_index);
 
 		// the child has a lower key so we swap
 		node_t tmp = buf[compared_index];
